@@ -1,4 +1,4 @@
-import * as stack from './stack.js';
+const stack = require('./stack.js');
 
 window.onload = function () {
     console.log("done");
