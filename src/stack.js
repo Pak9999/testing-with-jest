@@ -1,7 +1,7 @@
-const _ = import('underscore');
+const _ = require('underscore');
+// Comment: If you need ES modules for webpack, create a build script that temporarily changes this
 
 let stack = [];
-
 
 // Lägger ett element överst i stacken
 exports.push = function (x) {
@@ -15,5 +15,5 @@ exports.pop = function () {
 
 // Returnerar det översta elementet i stacken
 exports.peek = function () {
-    return stack[0]; // Det här är medvetet felaktigt
+    return _.last(stack);
 }
