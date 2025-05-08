@@ -1,0 +1,23 @@
+{
+  "name": "testing-with-jest",
+  "version": "1.0.0",
+  "description": "A lab",
+  "homepage": "https://github.com/Pak9999/testing-with-jest#readme",
+  "bugs": {
+    "url": "https://github.com/Pak9999/testing-with-jest/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pak9999/testing-with-jest.git"
+  },
+  "license": "ISC",
+  "author": "Pak9999",
+  "type": "commonjs",
+  "main": "src/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest tests"
+  }
+}
