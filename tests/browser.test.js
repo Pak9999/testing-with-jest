@@ -1,5 +1,13 @@
 const { Builder, By, until } = require('selenium-webdriver');
 require('geckodriver');
+const path = require('path');
+const firefox = require('selenium-webdriver/firefox');
+
+// Sätter sökvägen till geckodriver explicit för att undvika problem med PATH-variabeln
+const geckoDriverPath = path.resolve(__dirname, '../geckodriver.exe');
+const options = new firefox.Options();
+options.setBinary('C:/Program Files/Mozilla Firefox/firefox.exe');
+
 
 // Här anger vi var testfilen ska hämtas. De konstiga replaceAll-funktionerna ersätter
 // mellanslag med URL-säkra '%20' och backslash (\) på Windows med slash (/).
@@ -10,8 +18,15 @@ let driver;
 // Det här körs innan vi kör testerna för att säkerställa att Firefox är igång
 beforeAll(async () => {
     console.log('Running browser tests on:', fileUnderTest);
+    console.log('Using geckodriver at:', geckoDriverPath);
     try {
-        driver = await new Builder().forBrowser('firefox').build();
+        // skapar en ny instans av Firefox med geckodriver och öppnar testfilen
+        const service = new firefox.ServiceBuilder(geckoDriverPath);
+        driver = await new Builder()
+            .forBrowser('firefox')
+            .setFirefoxOptions(options)
+            .setFirefoxService(service)
+            .build();
         await driver.get(fileUnderTest);
         console.log('Browser initialized successfully');
     } catch (error) {

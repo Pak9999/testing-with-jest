@@ -9,8 +9,12 @@ window.onload = function () {
     var display = document.getElementById('top_of_stack');
 
     pop.addEventListener("click", function() {
-        var text = "Tog bort " + stack.pop();
+        var removed = stack.pop();
+        var text = "Tog bort " + removed;
         alert(text);
+
+        var topElement = stack.peek();
+        display.innerHTML = topElement !== undefined ? topElement : "n/a";
     });
 
     push.addEventListener("click", function() {

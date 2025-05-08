@@ -1,5 +1,4 @@
 const _ = require('underscore');
-// Comment: If you need ES modules for webpack, create a build script that temporarily changes this
 
 let stack = [];
 
@@ -10,8 +9,8 @@ exports.push = function (x) {
 
 // Returnerar det översta elementet i stacken och tar bort det
 exports.pop = function () {
-    // lägger till en bugg: returnerar element men tar inte bort det
-    return _.last(stack);
+    // Hämtar element och tar faktiskt bort det
+    return stack.pop();
 }
 
 // Returnerar det översta elementet i stacken
